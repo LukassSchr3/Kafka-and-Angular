@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { KafkaService } from './kafka.service';
 import { CommonModule } from '@angular/common';
@@ -10,12 +9,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  messages: string[] = [];
+  messages: any[] = [];
 
   constructor(private kafkaService: KafkaService) {}
 
   ngOnInit() {
-    this.kafkaService.getMessages().subscribe((data) => {
+    this.kafkaService.getMessages().subscribe(data => {
       this.messages = data;
     });
   }

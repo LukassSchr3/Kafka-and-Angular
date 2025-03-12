@@ -1,6 +1,26 @@
-<h2>Kafka Messages</h2>
-<ul>
-  <li *ngFor="let message of messages">
-    {{ message }}
-  </li>
-</ul>
+<h2>Product Recall Cases</h2>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Date Created</th>
+    <th>Supplier Name</th>
+    <th>Product Name</th>
+    <th>Recall Number</th>
+    <th>Amortisation Period</th>
+    <th>Kassasperre Datum</th>
+    <th>Re-delivery Possible</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let message of messages">
+    <td>{{ message.date_created }}</td>
+    <td>{{ message.supplier_name }}</td>
+    <td>{{ message.product_name }}</td>
+    <td>{{ message.recall_number }}</td>
+    <td>{{ message.amortisation_period }}</td>
+    <td>{{ message.kassasperre_datum }}</td>
+    <td>{{ message.re_delivery_possible ? 'Yes' : 'No' }}</td>
+  </tr>
+  </tbody>
+</table>

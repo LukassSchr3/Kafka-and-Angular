@@ -1,12 +1,22 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+// app.component.ts
+import { Component, OnInit } from '@angular/core';
+import { KafkaService } from './kafka.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-  title = 'KafkaForCommit';
+export class AppComponent implements OnInit {
+  messages: string[] = [];
+
+  constructor(private kafkaService: KafkaService) {}
+
+  ngOnInit() {
+    this.kafkaService.getMessages().subscribe((data) => {
+      this.messages = data;
+    });
+  }
 }

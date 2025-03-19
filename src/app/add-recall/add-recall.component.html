@@ -1,0 +1,129 @@
+<h2>Neuen Rückruf erfassen</h2>
+<form (ngSubmit)="submitRecall()" #recallForm="ngForm">
+
+  <label>Jahr:</label>
+  <input type="number" name="year" [(ngModel)]="recall.year"><br>
+
+  <label>Halbjahr:</label>
+  <input type="number" name="halfyear" [(ngModel)]="recall.halfyear"><br>
+
+  <label>Monat:</label>
+  <input type="number" name="month" [(ngModel)]="recall.month"><br>
+
+  <label>Tag:</label>
+  <input type="text" name="day" [(ngModel)]="recall.day"><br>
+
+  <label>Prüfnummer:</label>
+  <input type="text" name="prue_number" [(ngModel)]="recall.prue_number"><br>
+
+  <label>Prüf-Freigabe:</label>
+  <input type="datetime-local" name="prue_freigabe" [(ngModel)]="recall.prue_freigabe"><br>
+
+  <label>Art:</label>
+  <input type="text" name="art" [(ngModel)]="recall.art"><br>
+
+  <label>Art-Datum:</label>
+  <input type="date" name="artdate" [(ngModel)]="recall.artdate"><br>
+
+  <label>PI Income Date:</label>
+  <input type="datetime-local" name="pi_income_date" [(ngModel)]="recall.pi_income_date"><br>
+
+  <label>Typ:</label>
+  <input type="text" name="type" [(ngModel)]="recall.type"><br>
+
+  <label>Marke:</label>
+  <input type="checkbox" name="is_marke" [(ngModel)]="recall.is_marke"><br>
+
+  <label>Artikelanzahl (Prü):</label>
+  <input type="number" name="artikelanzahl_prue" [(ngModel)]="recall.artikelanzahl_prue"><br>
+
+  <label>Kassasperre:</label>
+  <input type="text" name="kassasperre" [(ngModel)]="recall.kassasperre"><br>
+
+  <label>Kundeninfo erstellen:</label>
+  <input type="text" name="createkundeninfo" [(ngModel)]="recall.createkundeninfo"><br>
+
+  <label>Meldung:</label>
+  <input type="checkbox" name="meldung" [(ngModel)]="recall.meldung"><br>
+
+  <label>Meldung Datum:</label>
+  <input type="datetime-local" name="meldung_date" [(ngModel)]="recall.meldung_date"><br>
+
+  <label>CM:</label>
+  <input type="text" name="cm" [(ngModel)]="recall.cm"><br>
+
+  <label>QM:</label>
+  <input type="text" name="qm" [(ngModel)]="recall.qm"><br>
+
+  <label>BM:</label>
+  <input type="text" name="bm" [(ngModel)]="recall.bm"><br>
+
+  <label>PM:</label>
+  <input type="text" name="pm" [(ngModel)]="recall.pm"><br>
+
+  <label>Bearbeitung Beginn:</label>
+  <input type="datetime-local" name="bearbeitung_beginn" [(ngModel)]="recall.bearbeitung_beginn"><br>
+
+  <label>Bearbeitung Ende:</label>
+  <input type="datetime-local" name="bearbeitung_ende" [(ngModel)]="recall.bearbeitung_ende"><br>
+
+  <label>Artsperr:</label>
+  <input type="text" name="artsperr" [(ngModel)]="recall.artsperr"><br>
+
+  <label>Anzahl Artsperr:</label>
+  <input type="number" name="anzahl_artsperr" [(ngModel)]="recall.anzahl_artsperr"><br>
+
+  <label>Formular:</label>
+  <input type="checkbox" name="formular" [(ngModel)]="recall.formular"><br>
+
+  <label>Mandatar:</label>
+  <input type="text" name="mandatar" [(ngModel)]="recall.mandatar"><br>
+
+  <label>Note:</label>
+  <input type="number" name="note" [(ngModel)]="recall.note"><br>
+
+  <label>Lieferant:</label><br>
+  <select [(ngModel)]="recall.lieferant_id" name="lieferant_id">
+    <option *ngFor="let l of lieferanten" [value]="l.liefranten_id">{{ l.lieferantenname }}</option>
+  </select><br>
+
+  <label>Produkt:</label><br>
+  <select [(ngModel)]="recall.product_id" name="product_id">
+    <option *ngFor="let p of produkte" [value]="p.product_id">{{ p.product_bezeichnung }}</option>
+  </select><br>
+
+  <label>Produzent:</label><br>
+  <select [(ngModel)]="recall.produzent_id" name="produzent_id">
+    <option *ngFor="let p of produzenten" [value]="p.produzent_id">{{ p.produzentname }}</option>
+  </select><br>
+
+  <label>Ursache:</label><br>
+  <select [(ngModel)]="recall.cause_id" name="cause_id">
+    <option *ngFor="let u of ursachen" [value]="u.cause_id">{{ u.detailed_cause }}</option>
+  </select><br>
+
+  <label>Version:</label><br>
+  <select [(ngModel)]="recall.version_id" name="version_id">
+    <option *ngFor="let v of versionen" [value]="v.version_id">{{ v.version_date }} – {{ v.description }}</option>
+  </select><br>
+
+  <label>Rechnung Name:</label>
+  <input type="text" name="rechnung_name" [(ngModel)]="recall.rechnung_name"><br>
+
+  <label>Rechnung Betrag:</label>
+  <input type="number" name="rechnung_betrag" [(ngModel)]="recall.rechnung_betrag"><br>
+
+  <label>Rechnung Sprache:</label>
+  <input type="text" name="rechnung_sprache" [(ngModel)]="recall.rechnung_sprache"><br>
+
+  <label>Rechnung Verrechnungsbetrag:</label>
+  <input type="number" name="rechnung_ver_betrag" [(ngModel)]="recall.rechnung_ver_betrag"><br>
+
+  <label>Rechnung Kontrolle:</label>
+  <input type="text" name="rechnung_kontrolle" [(ngModel)]="recall.rechnung_kontrolle"><br><br>
+
+  <button type="submit">Rückruf speichern</button>
+</form>
+
+<label>Recall-Daten als JSON hochladen:</label>
+<input type="file" (change)="onFileSelected($event)" accept=".json"><br>

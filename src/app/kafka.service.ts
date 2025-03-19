@@ -9,3 +9,5 @@ export class KafkaService {
     return this.http.get<string[]>('http://localhost:3000/api/messages');
   }
 }
+
+

@@ -1,8 +1,8 @@
 # Important commands
 
 - npm install
-- npm install pg (in backend)
 - cd backend
+- npm install pg (in backend)
 - node server.js
 
 I use Intellij

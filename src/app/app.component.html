@@ -3,24 +3,34 @@
 <table border="1">
   <thead>
   <tr>
-    <th>Date Created</th>
+    <th>ID</th>
+    <th>Year</th>
+    <th>Month</th>
+    <th>Day</th>
     <th>Supplier Name</th>
     <th>Product Name</th>
     <th>Recall Number</th>
     <th>Amortisation Period</th>
-    <th>Kassasperre Datum</th>
+    <th>Kassasperre</th>
     <th>Re-delivery Possible</th>
+    <th>Details</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let message of messages">
-    <td>{{ message.date_created }}</td>
+    <td>{{ message.rueckruf_id }}</td>
+    <td>{{ message.year }}</td>
+    <td>{{ message.month }}</td>
+    <td>{{ message.day }}</td>
     <td>{{ message.supplier_name }}</td>
     <td>{{ message.product_name }}</td>
     <td>{{ message.recall_number }}</td>
     <td>{{ message.amortisation_period }}</td>
-    <td>{{ message.kassasperre_datum }}</td>
-    <td>{{ message.re_delivery_possible ? 'Yes' : 'No' }}</td>
+    <td>{{ message.kassasperre || 'N/A' }}</td> <!-- Clearly fixed null handling -->
+    <td>{{ message.re_delivery_possible }}</td>
+    <td>
+      <a [routerLink]="['/recall', message.rueckruf_id]">View details</a>
+    </td>
   </tr>
   </tbody>
 </table>

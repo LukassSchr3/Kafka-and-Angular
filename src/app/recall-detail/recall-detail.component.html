@@ -1,0 +1,49 @@
+<h2>Recall Detail Information</h2>
+
+<table border="1">
+  <tr><th>ID</th><td>{{recall.rueckruf_id}}</td></tr>
+  <tr><th>Year</th><td>{{recall.year}}</td></tr>
+  <tr><th>Halfyear</th><td>{{recall.halfyear}}</td></tr>
+  <tr><th>Month</th><td>{{recall.month}}</td></tr>
+  <tr><th>Day</th><td>{{recall.day}}</td></tr>
+  <tr><th>Prüfnummer</th><td>{{recall.prue_number}}</td></tr>
+  <tr><th>Prüf-Freigabe</th><td>{{recall.prue_freigabe | date}}</td></tr>
+  <tr><th>Art</th><td>{{recall.art || 'N/A'}}</td></tr>
+  <tr><th>Art Date</th><td>{{recall.artdate || 'N/A'}}</td></tr>
+  <tr><th>PI Income Date</th><td>{{recall.pi_income_date | date}}</td></tr>
+  <tr><th>Type</th><td>{{recall.type}}</td></tr>
+  <tr><th>Is Marke</th><td>{{recall.is_marke ? 'Yes' : 'No'}}</td></tr>
+  <tr><th>Artikelanzahl Prü</th><td>{{recall.artikelanzahl_prue}}</td></tr>
+  <tr><th>Kassasperre</th><td>{{recall.kassasperre || 'N/A'}}</td></tr>
+  <tr><th>Create Kundeninfo</th><td>{{recall.createkundeninfo || 'N/A'}}</td></tr>
+  <tr><th>Meldung</th><td>{{recall.meldung ? 'Yes' : 'No'}}</td></tr>
+  <tr><th>Meldung Date</th><td>{{recall.meldung_date || 'N/A'}}</td></tr>
+  <tr><th>CM</th><td>{{recall.cm}}</td></tr>
+  <tr><th>QM</th><td>{{recall.qm}}</td></tr>
+  <tr><th>BM</th><td>{{recall.bm}}</td></tr>
+  <tr><th>PM</th><td>{{recall.pm}}</td></tr>
+  <tr><th>Bearbeitung Beginn</th><td>{{recall.bearbeitung_beginn | date:'short'}}</td></tr>
+  <tr><th>Bearbeitung Ende</th><td>{{recall.bearbeitung_ende | date:'short'}}</td></tr>
+  <tr><th>Artsperr</th><td>{{recall.artsperr}}</td></tr>
+  <tr><th>Anzahl Artsperr</th><td>{{recall.anzahl_artsperr}}</td></tr>
+  <tr><th>Formular</th><td>{{recall.formular ? 'Yes' : 'No'}}</td></tr>
+  <tr><th>Mandatar</th><td>{{recall.mandatar}}</td></tr>
+  <tr><th>Note</th><td>{{recall.note}}</td></tr>
+  <tr><th>Cause Details</th><td>{{recall.cause_details}}</td></tr>
+  <tr><th>Supplier Name</th><td>{{recall.supplier_name}}</td></tr>
+  <tr><th>Supplier Address</th><td>{{recall.supplier_address}}</td></tr>
+  <tr><th>Product Name</th><td>{{recall.product_name}}</td></tr>
+  <tr><th>Product Brand Name</th><td>{{recall.product_brand_name}}</td></tr>
+  <tr><th>Recall Number</th><td>{{recall.recall_number}}</td></tr>
+  <tr><th>Producer Name</th><td>{{recall.producer_name}}</td></tr>
+  <tr><th>Version Date</th><td>{{recall.version_date | date:'short'}}</td></tr>
+  <tr><th>Version Description</th><td>{{recall.version_description}}</td></tr>
+  <tr><th>Rechnung Name</th><td>{{recall.rechnung_name}}</td></tr>
+  <tr><th>Rechnung Betrag</th><td>{{recall.rechnung_betrag}}</td></tr>
+  <tr><th>Rechnung Sprache</th><td>{{recall.rechnung_sprache}}</td></tr>
+  <tr><th>Rechnung Ver Betrag</th><td>{{recall.rechnung_ver_betrag}}</td></tr>
+  <tr><th>Rechnung Kontrolle</th><td>{{recall.rechnung_kontrolle}}</td></tr>
+</table>
+
+<br>
+<a routerLink="/">Back to overview</a>

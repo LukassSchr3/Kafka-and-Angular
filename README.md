@@ -1,6 +1,4 @@
-# My Guide so it can work
-
-## Important code lines:
+# Important commands
 
 - npm install
 - npm install pg (in backend)

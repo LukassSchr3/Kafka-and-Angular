@@ -79,21 +79,47 @@ app.get('/api/recalls/:id', async (req, res) => {
 // Add a new recall entry
 app.post('/api/recalls', async (req, res) => {
   const {
-    year, month, day, prue_number, kassasperre, meldung,
-    lieferant_id, product_id, cause_id, produzent_id, version_id,
-    artikelanzahl_prue
+    year, halfyear, month, day, prue_number, prue_freigabe,
+    art, artdate, pi_income_date, type, is_marke, artikelanzahl_prue,
+    kassasperre, createkundeninfo, meldung, meldung_date,
+    cm, qm, bm, pm, bearbeitung_beginn, bearbeitung_ende,
+    artsperr, anzahl_artsperr, formular, mandatar, note,
+    cause_id, product_id, lieferant_id, produzent_id, version_id,
+    rechnung_name, rechnung_betrag, rechnung_sprache, rechnung_ver_betrag,
+    rechnung_kontrolle
   } = req.body;
 
   try {
     await pool.query(
       `INSERT INTO rueckruf (
-        year, month, day, prue_number, kassasperre, meldung,
-        lieferant_id, product_id, cause_id, produzent_id, version_id,
-        artikelanzahl_prue
-      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
-      [year, month, day, prue_number, kassasperre, meldung,
-        lieferant_id, product_id, cause_id, produzent_id, version_id,
-        artikelanzahl_prue]
+        year, halfyear, month, day, prue_number, prue_freigabe,
+        art, artdate, pi_income_date, type, is_marke, artikelanzahl_prue,
+        kassasperre, createkundeninfo, meldung, meldung_date,
+        cm, qm, bm, pm, bearbeitung_beginn, bearbeitung_ende,
+        artsperr, anzahl_artsperr, formular, mandatar, note,
+        cause_id, product_id, lieferant_id, produzent_id, version_id,
+        rechnung_name, rechnung_betrag, rechnung_sprache, rechnung_ver_betrag,
+        rechnung_kontrolle
+      ) VALUES (
+                 $1,$2,$3,$4,$5,$6,
+                 $7,$8,$9,$10,$11,$12,
+                 $13,$14,$15,$16,
+                 $17,$18,$19,$20,$21,$22,
+                 $23,$24,$25,$26,$27,
+                 $28,$29,$30,$31,$32,
+                 $33,$34,$35,$36,
+                 $37
+               )`,
+      [
+        year, halfyear, month, day, prue_number, prue_freigabe,
+        art, artdate, pi_income_date, type, is_marke, artikelanzahl_prue,
+        kassasperre, createkundeninfo, meldung, meldung_date,
+        cm, qm, bm, pm, bearbeitung_beginn, bearbeitung_ende,
+        artsperr, anzahl_artsperr, formular, mandatar, note,
+        cause_id, product_id, lieferant_id, produzent_id, version_id,
+        rechnung_name, rechnung_betrag, rechnung_sprache, rechnung_ver_betrag,
+        rechnung_kontrolle
+      ]
     );
     res.status(201).send('Recall added');
   } catch (err) {
@@ -138,25 +164,51 @@ app.post('/api/recalls/upload-json', upload.single('file'), async (req, res) => 
     const jsonData = JSON.parse(req.file.buffer.toString());
 
     const {
-      year, month, day, prue_number, kassasperre, meldung,
-      lieferant_id, product_id, cause_id, produzent_id, version_id,
-      artikelanzahl_prue
+      year, halfyear, month, day, prue_number, prue_freigabe,
+      art, artdate, pi_income_date, type, is_marke, artikelanzahl_prue,
+      kassasperre, createkundeninfo, meldung, meldung_date,
+      cm, qm, bm, pm, bearbeitung_beginn, bearbeitung_ende,
+      artsperr, anzahl_artsperr, formular, mandatar, note,
+      cause_id, product_id, lieferant_id, produzent_id, version_id,
+      rechnung_name, rechnung_betrag, rechnung_sprache, rechnung_ver_betrag,
+      rechnung_kontrolle
     } = jsonData;
 
     await pool.query(
       `INSERT INTO rueckruf (
-        year, month, day, prue_number, kassasperre, meldung,
-        lieferant_id, product_id, cause_id, produzent_id, version_id,
-        artikelanzahl_prue
-      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
-      [year, month, day, prue_number, kassasperre, meldung,
-        lieferant_id, product_id, cause_id, produzent_id, version_id,
-        artikelanzahl_prue]
+        year, halfyear, month, day, prue_number, prue_freigabe,
+        art, artdate, pi_income_date, type, is_marke, artikelanzahl_prue,
+        kassasperre, createkundeninfo, meldung, meldung_date,
+        cm, qm, bm, pm, bearbeitung_beginn, bearbeitung_ende,
+        artsperr, anzahl_artsperr, formular, mandatar, note,
+        cause_id, product_id, lieferant_id, produzent_id, version_id,
+        rechnung_name, rechnung_betrag, rechnung_sprache, rechnung_ver_betrag,
+        rechnung_kontrolle
+      ) VALUES (
+        $1,$2,$3,$4,$5,$6,
+        $7,$8,$9,$10,$11,$12,
+        $13,$14,$15,$16,
+        $17,$18,$19,$20,$21,$22,
+        $23,$24,$25,$26,$27,
+        $28,$29,$30,$31,$32,
+        $33,$34,$35,$36,
+        $37
+      )`,
+      [
+        year, halfyear, month, day, prue_number, prue_freigabe,
+        art, artdate, pi_income_date, type, is_marke, artikelanzahl_prue,
+        kassasperre, createkundeninfo, meldung, meldung_date,
+        cm, qm, bm, pm, bearbeitung_beginn, bearbeitung_ende,
+        artsperr, anzahl_artsperr, formular, mandatar, note,
+        cause_id, product_id, lieferant_id, produzent_id, version_id,
+        rechnung_name, rechnung_betrag, rechnung_sprache, rechnung_ver_betrag,
+        rechnung_kontrolle
+      ]
     );
 
-    res.status(201).send('Recall from JSON inserted');
+    res.status(201).send('Voller JSON-Eintrag erfolgreich eingefügt ✅');
   } catch (err) {
     console.error(err);
-    res.status(400).send('Invalid JSON or insert failed');
+    res.status(400).send('Fehler beim Verarbeiten der JSON-Datei ❌');
   }
 });
